@@ -67,6 +67,12 @@ app 'GitX.app' do
   current_version { |path| bundle_version(path, 'CFBundleShortVersionString') } #0.7.1
 end
 
+app 'Colloquy.app' do
+  source 'http://colloquy.info/downloads/colloquy-latest.zip'
+  latest_version { from_page 'http://colloquy.info/downloads.html', /<h1.*Colloquy (.*) \(/ }
+  current_version { |path| bundle_version(path, 'CFBundleShortVersionString') }
+end
+
 # - Colloquy
 # - VLC
 # - Sequel Pro
