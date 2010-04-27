@@ -21,6 +21,13 @@ app 'Skitch.app' do
   current_version { |path| bundle_version(path, 'CFBundleVersion').split(' ').first } #1.0b8.6 (v2520)
 end
 
+app 'Sofortbild.app' do
+  # can't process DMG inside of zip
+  source 'http://www.sofortbildapp.com/download/Sofortbild.dmg.zip'
+  latest_version { from_page 'http://www.sofortbildapp.com', /Download Sofortbild ([^<]*)/ }
+  current_version { |path| bundle_version(path, 'CFBundleShortVersionString') }
+end
+
 app 'Skype.app' do
   source 'http://www.skype.com/go/getskype-macosx.dmg'
   latest_version { from_page 'http://www.skype.com/download/skype/macosx/', /<title>Skype (\S*) / } #2.8
@@ -45,13 +52,6 @@ app 'pomodoro.app' do
   current_version { |path| bundle_version(path, 'CFBundleVersion') }
 end
 
-app 'Sofortbild.app' do
-  # can't process DMG inside of zip
-  source 'http://www.sofortbildapp.com/download/Sofortbild.dmg.zip'
-  latest_version { from_page 'http://www.sofortbildapp.com', /Download Sofortbild ([^<]*)/ }
-  current_version { |path| bundle_version(path, 'CFBundleShortVersionString') }
-end
-
 app 'Quicksilver.app' do
   source L {
     file = from_page 'http://github.com/tiennou/blacktree-alchemy/downloads', /href="(.*tar\.gz)"/
@@ -61,9 +61,12 @@ app 'Quicksilver.app' do
   current_version { |path| bundle_version(path, 'CFBundleVersion') }
 end
 
+app 'GitX.app' do
+  source 'http://frim.frim.nl/GitXStable.app.zip'
+  latest_version { from_page 'http://gitx.frim.nl/release_history.html', /<h1>v(.*)</ } #0.7
+  current_version { |path| bundle_version(path, 'CFBundleShortVersionString') } #0.7.1
+end
 
-# - Quicksilver
-# - Gitx
 # - Colloquy
 # - VLC
 # - Sequel Pro
