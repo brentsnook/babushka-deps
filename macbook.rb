@@ -33,8 +33,7 @@ app 'Skitch.app' do
   current_version { |path| bundle_version(path, 'CFBundleVersion').split(' ').first } #1.0b8.6 (v2520)
 end
 
-app 'Twitteriffic.app' do
-  # needs to somehow move extracted app to /Applications
+app 'Twitterrific.app' do
   source L { "http://iconfactory.com/assets/software/twitterrific/Twitterrific_#{version.gsub('.', '')}.zip" }
   latest_version { from_page 'http://iconfactory.com/software/twitterrific', /Download: Twitterrific (\S*)</ } 
   current_version { |path| bundle_version(path, 'CFBundleVersion') }
