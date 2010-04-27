@@ -1,7 +1,7 @@
 == TODO
 + Create a babushka deps project
-= Dep for installing all apps with stubs [x][x][x](x)(x)()()()()
-= Install all easy apps [][]
+= Dep for installing all apps with stubs [x][x][x](x)(x)(x)(x)(x)()
+= Figure out a better way to compare versions [][]
 = Homebrew []
 = XCode []
 = Git []
@@ -15,6 +15,7 @@
 = Dep for tuning settings [][]
 
 == LATER
+= HTTPS support patch then Dropbox dep
 = Handle configuration and settings for different apps
   - use keychain where possible
   - where are settings stored?
@@ -42,34 +43,15 @@
   - 1.9
   - jruby
 - MySQL
-- Teleport
-- Istat menus + configure properly
-- Skitch
-- Tweetie
-- Pomodoro
-- Urban Terror
-- Dropbox
-- Chromium
-- Colloquy
-- Sofortbild
 - Firefox
   - Add-ons
     - Firebug
     - Xmarks
     - Live headers
     ...
-- Quicksilver
-- Gitx
-- Colloquy
-- VLC
-- Sequel Pro
-- Fluid
-- Inkscape
-- Jolly's fast VNC
-- Gimp
-- Mactheripper
-- OmmWriter
-- Openoffice
+
+- Teleport
+- Istat menus + configure properly
 
 == Tune settings ==
 - Mouse speed
