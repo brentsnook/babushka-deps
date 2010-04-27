@@ -8,18 +8,6 @@ def bundle_version(path, key)
   IO.read(path / 'Contents/Info.plist').xml_val_for(key)
 end
 
-app 'Skype.app' do
-  source 'http://www.skype.com/go/getskype-macosx.dmg'
-  latest_version { from_page 'http://www.skype.com/download/skype/macosx/', /<title>Skype (\S*) / } #2.8
-  current_version { |path| bundle_version path, 'CFBundleShortVersionString' } #2.8.0.851
-end
-
-app 'Transmission.app' do
-  source L{ "http://mirrors.m0k.org/transmission/files/Transmission-#{version}.dmg" }
-  latest_version { from_page 'http://www.transmissionbt.com/download.php', /The current release version is <b>(.*)<\/b>/ } #1.92
-  current_version { |path| bundle_version path, 'CFBundleShortVersionString' } #1.92
-end
-
 app 'Dropbox.app' do
   # no https support yet!
   source 'https://www.dropbox.com/downloading?os=mac'
@@ -31,6 +19,18 @@ app 'Skitch.app' do
   source 'http://get.skitch.com/skitch-beta.dmg'
   # can't get the latest version anywhere
   current_version { |path| bundle_version(path, 'CFBundleVersion').split(' ').first } #1.0b8.6 (v2520)
+end
+
+app 'Skype.app' do
+  source 'http://www.skype.com/go/getskype-macosx.dmg'
+  latest_version { from_page 'http://www.skype.com/download/skype/macosx/', /<title>Skype (\S*) / } #2.8
+  current_version { |path| bundle_version path, 'CFBundleShortVersionString' } #2.8.0.851
+end
+
+app 'Transmission.app' do
+  source L{ "http://mirrors.m0k.org/transmission/files/Transmission-#{version}.dmg" }
+  latest_version { from_page 'http://www.transmissionbt.com/download.php', /The current release version is <b>(.*)<\/b>/ } #1.92
+  current_version { |path| bundle_version path, 'CFBundleShortVersionString' } #1.92
 end
 
 app 'Twitterrific.app' do
@@ -45,11 +45,23 @@ app 'pomodoro.app' do
   current_version { |path| bundle_version(path, 'CFBundleVersion') }
 end
 
-# - Pomodoro
-# - Urban Terror
-# - Chromium
-# - Sofortbild
-# - Firefox
+app 'Sofortbild.app' do
+  # can't process DMG inside of zip
+  source 'http://www.sofortbildapp.com/download/Sofortbild.dmg.zip'
+  latest_version { from_page 'http://www.sofortbildapp.com', /Download Sofortbild ([^<]*)/ }
+  current_version { |path| bundle_version(path, 'CFBundleShortVersionString') }
+end
+
+app 'Quicksilver.app' do
+  source L {
+    file = from_page 'http://github.com/tiennou/blacktree-alchemy/downloads', /href="(.*tar\.gz)"/
+    "http://github.com#{file}"
+  }
+  latest_version { from_page 'http://github.com/tiennou/blacktree-alchemy/downloads', /Quicksilver-.*-(\d*)\.tar\.gz/ }
+  current_version { |path| bundle_version(path, 'CFBundleVersion') }
+end
+
+
 # - Quicksilver
 # - Gitx
 # - Colloquy
@@ -58,10 +70,14 @@ end
 # - Fluid
 # - Inkscape
 # - Jolly's fast VNC
-# - Gimp
 # - Mactheripper
 # - OmmWriter
 # - Openoffice
+# - Firefox
+
+# - Urban Terror
+# - Chromium
+# - Gimp
 
 dep 'macbook' do
   [
