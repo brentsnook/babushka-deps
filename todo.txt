@@ -1,0 +1,87 @@
+== TODO
++ Create a babushka deps project
+= Dep for installing all apps with stubs [x][x][x](x)(x)()()()()
+= Install all easy apps [][]
+= Homebrew []
+= XCode []
+= Git []
+= RVM []
+= RVM versions for 1.8.6, 1.8.7, 1.8.9, JRuby [][]
+= MySQL []
+= All gems []
+= Textmate bundles []
+= Dep for copying settings and documents from given path (as variable) [][]
+= Dep for installing preference panes [][][]
+= Dep for tuning settings [][]
+
+== LATER
+= Handle configuration and settings for different apps
+  - use keychain where possible
+  - where are settings stored?
+
+= Copy across home dir and documents from disk
+= Handle settings
+
+
+- Apps
+ - start with a list, test current/latest version detection with each
+ 
+- Preference Panes
+  - Teleport
+
+
+
+- Git
+- Homebrew
+- RVM
+  - 1.8.6
+    - gems
+      - rails
+      ...
+  - 1.8.7
+  - 1.9
+  - jruby
+- MySQL
+- Teleport
+- Istat menus + configure properly
+- Skitch
+- Tweetie
+- Pomodoro
+- Urban Terror
+- Dropbox
+- Chromium
+- Colloquy
+- Sofortbild
+- Firefox
+  - Add-ons
+    - Firebug
+    - Xmarks
+    - Live headers
+    ...
+- Quicksilver
+- Gitx
+- Colloquy
+- VLC
+- Sequel Pro
+- Fluid
+- Inkscape
+- Jolly's fast VNC
+- Gimp
+- Mactheripper
+- OmmWriter
+- Openoffice
+
+== Tune settings ==
+- Mouse speed
+- Show full pathnames
+- Dock settings
+- Expose/Spaces
+- Displays
+- Energy saver
+- Trackpad
+
+== Copy from somewhere ==
+- Keychain
+- Home directory
+- Documents??? (handled by dropbox?)
+- Address book??? can synch some other way?
