@@ -30,8 +30,8 @@ end
 
 app 'Skype.app' do
   source 'http://www.skype.com/go/getskype-macosx.dmg'
-  latest_version { from_page 'http://www.skype.com/download/skype/macosx/', /<title>Skype (\S*) / } #2.8
-  current_version { |path| bundle_version path, 'CFBundleShortVersionString' } #2.8.0.851
+  latest_version { from_page 'http://www.skype.com/download/skype/macosx/', /<title>Skype (\S*) / }
+  current_version { |path| bundle_version(path, 'CFBundleShortVersionString').split('.')[0..1].join('.') }
 end
 
 app 'Transmission.app' do
@@ -70,14 +70,17 @@ end
 app 'Colloquy.app' do
   source 'http://colloquy.info/downloads/colloquy-latest.zip'
   latest_version { from_page 'http://colloquy.info/downloads.html', /<h1.*Colloquy (.*) \(/ }
+  current_version { |path| bundle_version(path, 'CFBundleShortVersionString') } 
+end
+
+app 'VLC.app' do
+  source L { "http://www.videolan.org/mirror-geo.php?file=vlc/#{version}/macosx/vlc-#{version}.dmg" }
+  latest_version { from_page 'http://www.videolan.org/vlc/download-macosx.html', /<h2>.*release (.*)\)/ }
   current_version { |path| bundle_version(path, 'CFBundleShortVersionString') }
 end
 
-# - Colloquy
 # - VLC
 # - Sequel Pro
-# - Fluid
-# - Inkscape
 # - Jolly's fast VNC
 # - Mactheripper
 # - OmmWriter
